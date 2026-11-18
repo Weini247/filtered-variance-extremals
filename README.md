@@ -62,4 +62,4 @@ The research is presented under the responsibility of its human author. AI-based
 
 ## Citation and permissions
 
-Use [CITATION.bib](CITATION.bib) and record the exact commit when referring to this repository. The bibliography for the mathematical sources is in [manuscript/references.bib](manuscript/references.bib). Public distribution and licensing of the manuscript, code, figures and certificate require explicit decisions by the rights holders.
+Use [CITATION.bib](CITATION.bib) and record the exact commit when referring to this repository. The bibliography for the mathematical sources is in [manuscript/references.bib](manuscript/references.bib). Jonas Weingart is the author. The [license scope and file inventory](LICENSE_SCOPE.md) identify the terms for the code, manuscript, figures, and certificate dataset. Font and dependency attributions are in the [third-party notices](THIRD_PARTY_NOTICES.md).
