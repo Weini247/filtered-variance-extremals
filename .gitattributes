@@ -1,2 +1,5 @@
 * text=auto eol=lf
 *.pdf binary
+
+# Keep upstream license and notice bytes verbatim.
+LICENSES/** -text whitespace=-blank-at-eol,-blank-at-eof

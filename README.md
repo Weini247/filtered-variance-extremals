@@ -6,6 +6,8 @@ A score is issued at time $a_i$, observed at $b_i$, bounded by one, and centered
 
 For a laminar schedule, a single recursively constructed law attains the maximum of every convex payoff of the weighted total. The stochastic recursion and the exact Gram recursion then give sharp comparisons on specified tree classes. The unrestricted depth-three problem remains open.
 
+**Technical manuscript, version 1.0 — 18 November 2026**
+
 [Manuscript PDF](manuscript/manuscript.pdf) · [LaTeX source](manuscript/manuscript.tex) · [Reproducibility guide](REPRODUCIBILITY.md) · [Citation metadata](CITATION.bib)
 
 ## Model and results
@@ -52,6 +54,12 @@ The first command checks source, PDF, checker and certificate digests. The next 
 
 The fair-sign root step uses conditional convex order and comonotone maximization. The depth-two constant uses the classical sharp real Khintchine inequality. Hausmann–Rodriguez classified the equivalent polygon-length chamber arrangement. Fang–Wang's Theorem 1 establishes the related four-coordinate Rademacher profile at fixed distance. The variance ratio studied here also depends on the matching and the outer weight. The manuscript gives the primary references and compares the optimization domains.
 
-The research and its computational checks were developed with AI assistance. The exact certificate, alternative replay and mathematical proofs are available for scrutiny. No journal refereeing, independent human endorsement or established publication priority is claimed. This material concerns extremal probability under specified information constraints.
+### AI Assistance and Scientific Responsibility
 
-Use [CITATION.bib](CITATION.bib) and record the exact commit when referring to this repository. The bibliography for the mathematical sources is in [manuscript/references.bib](manuscript/references.bib). Public distribution, author attribution, and licensing of the manuscript, code, figures and certificate require explicit decisions by the rights holders.
+This project was developed with substantial generative-AI assistance, extending beyond writing and programming to mathematical exploration, proof development, exact computational verification, literature research, and scientific review.
+
+The research is presented under the responsibility of its human author. AI-based reviews are not equivalent to independent human peer review. Mathematical claims, source code, and reproducible certificates are provided for independent scrutiny.
+
+## Citation and permissions
+
+Use [CITATION.bib](CITATION.bib) and record the exact commit when referring to this repository. The bibliography for the mathematical sources is in [manuscript/references.bib](manuscript/references.bib). Jonas Weingart is the author. The [license scope and file inventory](LICENSE_SCOPE.md) identify the terms for the code, manuscript, figures, and certificate dataset. Font and dependency attributions are in the [third-party notices](THIRD_PARTY_NOTICES.md).

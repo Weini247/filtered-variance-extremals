@@ -67,4 +67,4 @@ Use a separate output directory for a verification build to preserve the include
 
 ## Citation and permissions
 
-The technical paper's complete bibliography is supplied alongside the LaTeX. [CITATION.bib](CITATION.bib) identifies the repository materials. Cite a commit for source-specific results. Rights holders must decide authorship and public distribution terms before any public release.
+The technical paper's complete bibliography is supplied alongside the LaTeX. [CITATION.bib](CITATION.bib) identifies the repository materials. Cite a commit for source-specific results. See the [license scope and file inventory](LICENSE_SCOPE.md) and [third-party notices](THIRD_PARTY_NOTICES.md) for component-specific terms.
