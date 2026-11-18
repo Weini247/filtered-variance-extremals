@@ -1,0 +1,13 @@
+{
+  "schema": "reviewed-manuscript-v1",
+  "reviewed_pdf_pages": 13,
+  "sha256": {
+    "manuscript/appendices/three-star-certificate.tex": "7f7b0ffc34b1802d6b649532753c48548e010d83db55eeb1e2148b1683ca97bd",
+    "manuscript/manuscript.pdf": "da762f27634ee6826937c3594b4eefc6a8a37e4f5f9fa32419dcfcd6144e73c8",
+    "manuscript/manuscript.tex": "87ee39b01ff76106986b5e41f7ba8b0df4bf6688c5d5001d812d5bedcca3e5a0",
+    "manuscript/references.bib": "c3ef88b648c804de957ed09fcb652b0a1c23fc70730bbd183ad2632cb3394a48",
+    "manuscript/sections/model-and-recursion.tex": "bfcf8cec67105a1592ca9c98ed610e4b73a81b9334f5e46f50f43766e37f159b",
+    "manuscript/sections/scope.tex": "23857fab5345f80647f5162e491aedafb97ae8e6175b60020de646f2e5120286",
+    "manuscript/sections/sharp-comparisons.tex": "eba8d94052d7057940a092eec385ab81c63eafb7ec2dd87c8c30d6c5e5c1dfd3"
+  }
+}

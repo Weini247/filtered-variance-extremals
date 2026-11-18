@@ -1,0 +1,141 @@
+\section{Exact certificate for the three-star bound}\label{app:tape}
+
+The certificate establishes~\eqref{eq:norm-test} on the
+nondominant part of the sorted nonnegative cone in six coordinates.
+It covers each of the fifteen perfect matchings. Homogeneity permits a
+unit-sum slice for ray computations. The numerical search that proposed
+the subdivision and active sets supplies no inequality or coverage step.
+The input to exact verification is the saved finite plan and the explicit
+geometry below.
+
+\subsection{Polyhedral partition}
+
+Sort $x_1\ge\cdots\ge x_6\ge0$ and retain all index matchings,
+including when some values tie or vanish. For a matching
+$\mathcal M$ let $P_\mathcal M x$ consist of $x_i+kx_j$ for each
+pair $i<j$. Then $B=\norm{P_\mathcal M x}$ and
+\[
+ A(x)=\frac1{32}\sum_{s\in\{1\}\times\{-1,1\}^5}\abs{s^\top x}.
+\]
+Hausmann and Rodriguez \cite[Table (1--1), Sections 4--5]{hausmann}
+classify the same length arrangement. Each wall equates the lengths
+in a subset with those in its complement. Writing their difference
+as a sign form, reversing the sorting convention and taking closures
+identifies the walls here. Their chamber counts in six and eight
+coordinates are 21 and 2,470, respectively. The exact verification
+below reconstructs the six-coordinate geometry and uses it for a
+matching-dependent inequality.
+
+In gap variables $d_i=x_i-x_{i+1}$ with $x_7=0$, the coefficients of
+$s^\top x$ are the successive prefix sums of $s$. Exactly twelve
+forms have both positive and negative gap coefficients and need
+both orientations. Every other form has a constant weak sign.
+For each of the $2^{12}$ weak orientations, the intersection with
+the nonnegative gap cone is pointed. Every extreme ray has five
+linearly independent active homogeneous normals, with defining
+equalities also available on lower-dimensional chambers.
+Enumerate all five-normal choices from the six gap facets and
+twelve walls and take their signed cofactors. Retain nonzero
+nonnegative null vectors, convert gaps to coefficients, and normalize
+each to primitive integer coordinates. For each orientation retain
+all rays satisfying its weak inequalities. This procedure lists
+every extreme ray and hence generates every closed cone.
+Dropping duplicate ray sets and proper subsets preserves the union.
+The exact result is eighteen rays and twenty-one maximal chambers.
+Each maximal cone has six independent generators, checked by its
+determinant. The one cone with strict dominance in its interior is
+handled by Lemma~\ref{lem:dominant}. Its shared faces remain covered.
+Zero weights and ties belong to closed chambers, and the origin
+gives zero inner moments.
+
+\subsection{A certificate on one closed cone}
+
+Throughout one chamber $A=\ell^\top x$ with $\ell$ a signed
+average of sign vectors. Then $|\ell^\top z|\le A(z)\le\norm z$
+in the entire ambient space. Put $N=I-\ell\ell^\top$. It is positive
+definite on each nondominant maximal chamber. Indeed,
+$\norm\ell=1$ would give $A(\ell)=1$, so the absolute Rademacher
+sum at $\ell$ would be constant by Cauchy--Schwarz. The degree-two
+sign coefficients of its square imply $\ell_i\ell_j=0$ for $i\ne j$.
+Positivity and $A(x)\ge x_1$ on a full-dimensional sorted chamber
+then force $\ell=e_1$. Averaging first over the largest sign gives
+$A(x)=x_1$ exactly in the dominant region.
+
+For generators $v_i$ normalized to unit coordinate sum put
+$G_{ij}=v_i^\top N v_j$, and choose
+$\beta_i\ge \norm{P_\mathcal M v_i}-A(v_i)$. For a certificate
+vector $h$ verify
+\begin{equation}
+ Gh\ge\beta,\qquad h^\top Gh\le H,\quad H=4-8\sqrt2/3 .
+ \label{eq:check}
+\end{equation}
+With $x=\sum_i t_i v_i$ for $t_i\ge0$ and $y=\sum_i h_i v_i$,
+the triangle inequality,~\eqref{eq:check} and Cauchy--Schwarz
+in $N$ give
+\[
+ B(x)-A(x)\le\sum_i t_i\beta_i
+ \le x^\top Ny\le \sqrt{x^\top Nx}\sqrt{h^\top Gh}.
+\]
+This is the required continuous inequality. The entries of $h$
+may have either sign. At a stored active set $J$ the checker sets
+$h_{J^c}=0$, solves $G_{JJ}h_J=\beta_J$ and checks every row of
+$Gh\ge\beta$. The norm equals $h_J^\top\beta_J$.
+
+A ray norm is exact for zero, one nonzero entry or two equal nonzero
+entries of $P_\mathcal M v_i$. Otherwise the least upper bound on
+the grid of denominator $10^{12}$ is used, obtained by comparing
+squares. The ray norm is at most one by unit-sum normalization.
+All inequalities use $\mathbb Q(\sqrt2)$. For opposite signs of
+the two rational parts of $a+b\sqrt2$, testing its sign reduces
+to comparing $a^2$ and $2b^2$ and selecting the dominant sign.
+The linear solves have rational Gram matrices and use positive
+pivots. All field comparisons are exact.
+
+\subsection{Subdivision plan and verification interface}
+
+Sort the primitive integer rays lexicographically. A chamber is
+identified by its increasing tuple of ray indices in that list.
+Visit chambers lexicographically and omit the dominant chamber.
+Within each chamber visit matchings in the recursive order that
+pairs the least unused index with each remaining index in increasing
+order and recurses on the others. This yields $20\cdot15=300$
+root cases. A base64 block in the preserved S07 document decodes
+to the preorder traversal of those binary trees.
+Bytes $1$ through $63$ are nonempty active-set masks on the six
+current generators. Bytes $64$ through $78$ select one of the
+fifteen pairs of generator slots in lexicographic order.
+
+For a split on slots $i<j$, replace $v_j$ by $(v_i+v_j)/2$ in
+the first child and $v_i$ by the same midpoint in the second.
+Both children remain simplicial. If $t_i\ge t_j$, use $2t_j$
+on the midpoint and $t_i-t_j$ on $v_i$ in the first child.
+If $t_i\le t_j$ use the reversed representation in the second.
+They cover the entire parent and share the equality face. The
+verifier visits both branches and consumes the plan exactly.
+It checks 1,854 nodes, including 777 splits and 1,077 terminal
+certificates, at a maximum depth of six. The node count also satisfies $1854=2(1077)-300$.
+
+On a strict norm leaf,~\eqref{eq:check} gives a strict bound for
+all nonzero $x$ by positive definiteness of $N$. Exactly 34 leaves
+saturate the norm condition. For every such leaf the verifier
+checks that $y$ is a positive multiple of $(x_0,x_0,1,1,0,0)$.
+Equality in Cauchy--Schwarz forces $x$ onto this ray. This supplies
+a necessary equality direction on every terminal leaf. Sharpness
+itself follows from the explicit attaining weights in the main
+proof.
+
+The exact plan, embedded in the S07 copy, and the two Python
+verifiers accompany the manuscript under \path{certificate/}.
+See \path{README.md} for the two replay commands. S07 enumerates
+rays by cofactors and bounds the norm by field comparisons. S08
+independently reconstructs the partition by clipping the sorted
+simplex against the walls, including all opposite-side intersections
+and filtering by active-normal rank. It uses full sign sums,
+an alternative field representation, integer square-root brackets
+and rational $LDL^\top$ solves. The two implementations verify the
+same proposed subdivision and active-set data. S08's optional
+eight-coordinate geometry run counts 2,470 maximal cells, 206
+rays and a maximum of 37 rays in a cell. Its checks concern these
+partition statistics, with shared faces included by the geometry.
+A certificate of all four-star inequalities would require separate
+checks on the remaining domain.

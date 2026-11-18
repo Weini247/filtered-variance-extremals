@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[letterpaper,margin=1.12in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Vstar}{V^\star}
+\newcommand{\cx}{\preceq_{\rm cx}}
+\newcommand{\norm}[1]{\lVert #1\rVert_2}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+\allowdisplaybreaks[1]
+\clubpenalty=10000
+\widowpenalty=10000
+\setlength{\emergencystretch}{1em}
+\hypersetup{pdftitle={Sharp Variance Comparisons on Laminar Information Intervals}}
+\title{Sharp Variance Comparisons for Conditionally Centered Scores on Laminar Information Intervals}
+\author{}
+\date{Private working manuscript, 18 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We maximize the variance of a deterministic weighted sum of bounded scores,
+each revealed at a deterministic maturity and centered conditionally on its
+issue-time information. A finite sign linear program retains the entire
+matured-score history. For laminar schedules, we construct a single feasible
+law that maximizes every convex payoff of the total. The construction
+attains its bound with independently sampled child vectors even though
+admissible later vectors may depend on earlier histories. Together with an
+exact Gram recursion, it yields the sharp depth-two factor
+$(1+1/\sqrt2)/2$ relative to a covariance semidefinite relaxation.
+For one outer interval with at most two child stars of at most two active
+leaves each, we prove analytically that the sharp factor is
+$\gamma=3/(15-8\sqrt2)$. An exact computer-assisted proof extends this
+factor to at most three such stars. Nonzero equality uses two active
+stars and a unique weight pattern up to signs, relabeling and scale.
+The unrestricted depth-three constant lies between $(1+4/\pi)/3$ and
+$\gamma$ and remains undetermined.
+\end{abstract}
+
+\section{Introduction}
+
+Overlap of issue-to-maturity intervals permits covariance, but issue-time
+centering can constrain the joint law well beyond its second moments.
+For a fixed schedule, we compare the largest attainable variance with
+a covariance semidefinite program that fixes disjoint entries to zero.
+The central question is when chronological conditioning allows the
+worst law to be constructed one branch at a time.
+
+Laminarity makes sibling intervals chronologically disjoint. Earlier
+sibling scores therefore belong to every later sibling's incoming
+information. The feasible kernels can depend on that information.
+Our recursion works because the same symmetric child law dominates
+every admissible conditional law in convex order. Maximization then
+reduces to independent child vectors followed by a feasible root coupling.
+The Gram problem has a parallel recursion based on orthogonal spans.
+Combining these recursions exposes a trade-off between a Rademacher first
+moment and a pairing-dependent Gram norm.
+
+Convex comparison for bounded martingale differences and comonotone
+maximization for specified marginals are established principles
+\cite{bentkus,kaas,cheung,leskela}. The local fair-sign step below is
+an instance of those principles. The argument that carries it through the
+specified issue histories and attains it at all nodes is essential here.
+Related lagged forecast inference uses conditional centering for different
+objectives \cite{choe}. Graph Grothendieck problems compare deterministic
+sign and unit-vector edge objectives \cite{laurent}. Our nonedge entries
+are prescribed zeros and our sign variables obey full-history equations.
+Sparse PSD decomposition addresses the matrix constraints
+\cite{agler}. Gaussian rounding uses established PSD comparison techniques
+\cite{nesterov,briet}. The sharp moment inequality and the sign chambers
+also come from established work. The specific comparison proved here
+optimizes the filtered-law numerator jointly with its Gram denominator.
+The resulting recursion is distributional. Its statement carries no
+polynomial-time bound for evaluating arbitrary weighted sums.
+
+\input{sections/model-and-recursion}
+\input{sections/sharp-comparisons}
+\input{sections/scope}
+\appendix
+\input{appendices/three-star-certificate}
+\bibliographystyle{plain}
+\begingroup
+\raggedright
+\bibliography{references}
+\endgroup
+\end{document}

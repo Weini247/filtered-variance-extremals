@@ -1,0 +1,11 @@
+{
+  "decoded_bytes": 1854,
+  "decoded_sha256": "0fd79003f82d2f77e40af00086121813a5f7491f20b16a7dc8503680fd591f47",
+  "encoding": "Base64 wrapped at 76 columns",
+  "schema": "three-star-certificate-v1",
+  "verification_payloads": {
+    "certificate/three-star-tape.txt": "bda03bb79948e57b8a965f4890d6466b6459288e239977fd1bd3fbc4b3a8a6ee",
+    "certificate/verify_s07.py": "c098a0d5453fb1993b3c00214e5929a28081977f54e3ffb203dbd1a4f972ac13",
+    "certificate/verify_s08.py": "c5c0cdd25b9ec7644a5833694ed49b00c6293e0c658e9c127bee6e8358235106"
+  }
+}

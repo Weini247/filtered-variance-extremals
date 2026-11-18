@@ -1,0 +1,27 @@
+name: Verify research artifacts
+on:
+  push:
+    branches: [research/release-v1]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Check archived bytes
+        run: python -I -B scripts/check_artifacts.py
+      - name: Exercise the reference implementation
+        run: python -B -m unittest discover -s tests -v
+      - name: Verify the exact certificate
+        run: python -I -B certificate/verify_s07.py certificate/three-star-tape.txt
+      - name: Replay with the alternative verifier
+        run: python -I -B certificate/verify_s08.py certificate/three-star-tape.txt

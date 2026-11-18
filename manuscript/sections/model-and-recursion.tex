@@ -1,0 +1,187 @@
+\section{Model and exact sign program}
+
+\begin{definition}[Admissible scores]\label{def:model}
+Fix a finite discrete clock and distinct deterministic supports
+$I_i=(a_i,b_i]$ with $a_i<b_i$. On a filtered probability space,
+a score $X_i$ satisfies
+\[
+ |X_i|\le 1,\qquad X_i\text{ is }\mathcal F_{b_i}\text{-measurable},
+ \qquad \E[X_i\mid\mathcal F_{a_i}]=0.
+\]
+All scores maturing at a given time are available at issues at that time.
+The weight vector $w$ is real and deterministic. A family is laminar
+when any two supports are disjoint or one contains the other. Its depth
+is the number of supports in a longest strict inclusion chain.
+\end{definition}
+
+The admissible class varies over filtered spaces and laws. All scores
+have mean zero, so define
+\begin{align}
+ \Vstar &= \sup_{\rm admissible}\E\Big(\sum_i w_i X_i\Big)^2,\\
+ U &= \max\{w^\top Cw : C=C^\top\succeq0,\ C_{ii}=1,\
+           C_{ij}=0\text{ if } I_i\cap I_j=\varnothing\}.\label{eq:sdp}
+\end{align}
+Here $\Vstar$ is the worst variance for this law class. Replace $X_i$ by
+$\operatorname{sgn}(w_i)X_i$ with either sign at a zero weight, and
+conjugate $C$ by the same diagonal sign matrix. This preserves both
+problems and permits nonnegative weights below. Other deterministic
+score bounds can be absorbed into the weights. The identity is feasible
+in~\eqref{eq:sdp}, so $U>0$ when $w\ne0$. All zero-weight instances
+have both optima zero and require no ratio.
+
+\begin{theorem}[Full matured-history sign LP]\label{thm:lp}
+Let $M_i=\{j:b_j\le a_i\}$. The value $\Vstar$ equals the maximum of
+$\sum_z p_z(w^\top z)^2$ over the following finite polytope:
+\[
+ p_z\ge0,\qquad \sum_{z\in\{-1,1\}^n}p_z=1,\qquad
+ \sum_{z:z_{M_i}=h}p_z z_i=0
+ \quad\bigl(i,\ h\in\{-1,1\}^{M_i}\bigr).
+\]
+For each convex function of the weighted total, maximizing its
+expectation over this polytope gives the corresponding supremum.
+\end{theorem}
+\begin{proof}
+On an independent product extension sample independent uniform
+random variables $L_i$ on $[0,1]$. Release $L_i$ at $b_i$ and set
+$Z_i=2\mathbf1_{\{L_i\le(1+X_i)/2\}}-1$.
+Conditional on the original terminal field the signs are independent
+with means $X_i$. Conditional Jensen therefore increases every convex
+payoff, and the square increases in expectation by
+$\sum_i w_i^2(1-\E X_i^2)$. At $a_i$ the variable $L_i$ is fresh.
+Condition first on the original terminal field and the released uniforms
+to integrate $L_i$, then project down to the original issue field
+enlarged by the released uniforms. The conditional expectation of $X_i$
+there equals $\E[X_i\mid\mathcal F_{a_i}]=0$ by independence. Projecting
+down to the matured signs gives all the displayed equations.
+
+Conversely, sample a sign vector with masses $p_z$ and at time $t$ take
+$\sigma(Z_j:b_j\le t)$ as the filtration. Each positive-mass history
+has conditional mean zero by its equation, while a zero-mass history
+imposes no further condition. This realizes every feasible vector of
+masses. Compactness of the nonempty polytope gives attainment.
+\end{proof}
+
+If $b_i\le a_j$, the tower property gives $\E X_iX_j=0$. Thus the sign
+problem is bounded above by~\eqref{eq:sdp}. Pairwise zero covariances alone
+do not enforce conditional centering. For three disjoint consecutive
+intervals, let the signs be $R,S,RS$ for independent fair signs $R,S$.
+The covariance matrix is the identity, but $RS$ is already determined
+at its issue. In the opposite direction, admissible disjoint subtree
+vectors may be dependent while each cross covariance vanishes.
+
+\section{Laminar convex-order and Gram recursions}
+
+For bounded random variables $Y,Y'$ write $Y\cx Y'$ when
+$\E f(Y)\le \E f(Y')$ for every real convex $f$. Write $\sgn_0$ for
+the sign with an independent fair tie coin at zero.
+
+\begin{lemma}[Fair root extension]\label{lem:root}
+If $S\cx S^\circ$, $S^\circ$ is symmetric, $Y$ is a fair sign with
+arbitrary coupling to $S$, and $m\ge0$, then
+\[
+ S+mY\cx S^\circ+m\sgn_0(S^\circ).
+\]
+\end{lemma}
+\begin{proof}
+Fix convex $f$ and put $\lambda=(f(m)-f(-m))/2$ and
+$g(s)=\max\{f(s+m)-\lambda,f(s-m)+\lambda\}$.
+The convex function $g$ bounds $f(S+mY)-\lambda Y$ pointwise.
+The expectations are bounded by $\E g(S^\circ)$ because $Y$ is fair
+and $g$ is convex. The increment $f(s+m)-f(s-m)$ is nondecreasing
+in $s$, and the two branches meet at zero. Hence $\sgn_0(S^\circ)$
+selects a maximizing branch and is fair by symmetry. Substituting
+this choice shows that $\E g(S^\circ)$ equals the stated upper payoff.
+The argument also covers a zero weight and atoms at zero.
+\end{proof}
+
+The selected coupling is comonotone. More generally, with a fixed
+bounded inner law $S$, the largest $\E[SY]$ over fair signs $Y$ is
+$\min_t\E|S-t|$. For any $t$, fairness gives
+$\E[SY]=\E[(S-t)Y]\le \E|S-t|$. At a median use the sign of $S-t$
+off the median and choose the tie probabilities to make the sign fair.
+If a root has a trivial incoming field and can observe the inner vector
+at maturity, this coupling is admissible. The threshold zero in
+Lemma~\ref{lem:root} is justified by symmetry of the reference law.
+
+\begin{theorem}[Conditional laminar extremum]\label{thm:tree}
+Order the children of every node $v$ of a finite laminar forest by time.
+Independently sample their canonical vectors and a fresh fair tie coin
+at $v$. Recursively define the canonical total
+\[
+ S_v=\sum_{c:\,c\text{ child of }v}T_c,\qquad
+ T_v=S_v+w_v\sgn_0(S_v).
+ \tag{*}\label{eq:tree}
+\]
+The empty sum is zero. For every admissible law and event
+$E\in\mathcal F_{a_v}$ with $\Pr(E)>0$, the conditional distribution
+of the weighted subtree total given $E$ is dominated by $T_v$ in
+convex order. The canonical vector is admissible in its matured-sign
+filtration. Independent maximal components give a convex-order
+maximum for the forest total and
+\[
+ \Vstar=\sum_{v\text{ maximal}}\E T_v^2.
+\]
+\end{theorem}
+\begin{proof}
+Prove the eventwise statement by induction on the subtree. For bounded
+scores, endpoint rounding as in Theorem~\ref{thm:lp} also applies
+under the law conditioned on $E$. In particular, $E$ belongs to the
+original terminal field, so conditional Jensen given that field and
+averaging on $E$ yield the convex comparison with the rounded signs.
+It suffices to prove the induction for signs. Conditioning on $E$
+preserves every descendant's issue constraint because $E$ belongs to
+each descendant's issue field. For any event $F$ in that issue field,
+the original centering equation integrated on $E\cap F$ gives the
+conditional-law equation on $F$.
+A leaf is fair under this conditioning and has the canonical law.
+
+Under the law conditioned on $E$, fix the complete sign vectors of
+the children preceding the last child. Their maturities are no later
+than the last child's issue. Each positive-mass joint history, together
+with $E$, is an incoming event for that subtree. On this history the
+earlier total is a fixed number. The induction hypothesis applied to
+the convex payoff translated by that total bounds the expected payoff
+by averaging against the same canonical last-child law for every
+history. Such averaging leaves a convex function of the earlier sum.
+Iterating backwards over the children replaces the adaptive joint sum
+by the sum of independent canonical child totals in convex order.
+This reference sum is symmetric. The actual root sign is fair on $E$.
+Lemma~\ref{lem:root} proves the eventwise comparison with~\eqref{eq:tree}.
+
+For attainment generate the canonical signs from independent primitive
+tie coins at the nodes. A node's sign is a function of its own subtree's
+coins and is fair by symmetry, including at zero. At its issue every
+descendant is still immature because each has positive length and starts
+at or after that issue. Every ancestor is also immature. The matured
+scores are in separated branches and are functions of coins
+outside the node's subtree. Thus the sign is conditionally fair at issue. The
+matured-sign filtration reveals all coincident maturities together and
+makes the assigned signs measurable at maturity. This establishes
+simultaneous feasibility. Apply the same backwards argument to the
+ordered maximal components, without an additional root, to obtain the
+forest convex-order maximum. Independent component totals are centered,
+so the square yields the formula for $\Vstar$.
+\end{proof}
+
+Independent child vectors are one attaining choice. For example, with
+two disjoint two-leaf stars of unit weights inside one root, the later
+root may copy its first leaf if the earlier first leaf is positive and
+its second leaf otherwise. Its conditional total has the same law on
+both histories, while its joint vector depends on the first star.
+The outer sign can still attain the optimum.
+
+\begin{proposition}[Gram recursion]\label{prop:gram}
+Define $u_v=w_v+\sqrt{\sum_{c:\,c\text{ child of }v}u_c^2}$. Then
+$U=\sum_{v\text{ maximal}}u_v^2$.
+\end{proposition}
+\begin{proof}
+Represent $C$ by unit Gram vectors. The spans of distinct child
+subtrees are orthogonal because their supports are disjoint. The
+largest possible child-sum norm is bounded by the square root of the
+sum of their squared optima. Adding the parent increases it by at most
+$w_v$. To attain both bounds, embed optimal child systems in orthogonal
+spaces and align the parent with their weighted sum. If it vanishes,
+use a fresh orthogonal unit vector. No disjointness zero inside the
+subtree involves its parent. At a maximal component the same construction
+leaves its span orthogonal to every other maximal component.
+\end{proof}

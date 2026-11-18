@@ -1,0 +1,125 @@
+\section{Further bounds and limitations}
+
+\begin{proposition}[Unrestricted depth three]\label{prop:c3}
+For the infimum $c_3$ of $\Vstar/U$ over laminar forests of depth at
+most three with $U>0$,
+\[
+ \frac{1+4/\pi}{3}\le c_3\le\gamma .
+\]
+\end{proposition}
+\begin{proof}
+After taking weight magnitudes the Gram recursion admits a maximizing
+system with nonnegative coordinates: place child systems on disjoint
+coordinate sets and align each root with the nonnegative sum, using
+a fresh coordinate at zero. Let $C$ be this covariance matrix and let
+$D=\sum_iw_i^2$. For a Gaussian vector with covariance $C$, each
+coordinate is independent of the joint vector of coordinates matured
+at its issue because its cross-covariances with this vector vanish.
+Gaussian signs therefore satisfy the history LP. The Gaussian sign
+correlation formula gives $(2/\pi)\arcsin C_{ij}$. Since $C_{ij}\ge0$,
+the resulting objective is at least $D+(2/\pi)(U-D)$.
+
+For a subtree of depth $d$ let $D_v$ be its sum of squared weights.
+Inductively $u_v^2\le dD_v$. At a nonleaf use
+$\sum_c u_c^2\le(d-1)(D_v-w_v^2)$ and apply
+Cauchy--Schwarz to the two terms of the Gram recursion. This gives
+$U\le3D$ in depth three, and the lower bound follows. The upper bound
+uses the attaining weights of Theorem~\ref{thm:seven}.
+\end{proof}
+
+The equality $c_3=\gamma$ is open. The three-star theorem restricts
+both the number of child stars and the number of active leaves.
+The depth-three formula still follows from the general recursions
+with either restriction removed, but its first moment and Gram norm
+then need a new joint comparison.
+
+\subsection{Four-star partial results}
+
+The established four-star analysis covers a relative neighbourhood of
+the three-star boundary, four identical effective pairs, and the slice
+with two zero lighter coefficients. Its explicit local estimate is useful
+for identifying an obstruction to a naive deletion argument. Choose two
+pairs $(x+u,y+v),(x-u,y-v)$ and let $Z$ be the sum of the remaining
+pairs, with Gram norm $B_Z$. Set
+\[
+ B_0=\sqrt2(x+ky),\quad D_0=2(u+kv)^2+B_Z^2,\quad
+ \sigma=\tfrac14\sqrt{c_2/2},\quad \lambda=\sigma/\gamma .
+\]
+Here $B^2=B_0^2+D_0$. Relative to the two identical pairs $(x,y)$,
+the increase in the first moment is at least $\sigma\sqrt{D_0}$.
+To see this, condition on the cancellation of the two large signs and
+the two small signs. On the joint cancellation event of probability
+$1/4$, use sharp Khintchine on $2u\epsilon+2v\eta+Z$.
+On the other events Jensen bounds the contribution below by the
+corresponding reference contribution. The second moment increases by
+at least $c_2D_0$ by Cauchy--Schwarz. Consequently
+$\sqrt{D_0}/B_0\le 2\lambda/(1-\lambda^2)$ for $B_0>0$ gives
+$A-A_0\ge\gamma(B-B_0)$, and the deficit at $\gamma$ cannot decrease.
+On the normalized four-pair domain $B=1$, the minimized deficit is
+continuous. On the boundary with a zero full pair it is positive
+except at the equality rays of Theorem~\ref{thm:three}, where the
+explicit estimate applies. Compactness yields a uniform neighbourhood
+of that boundary with an existential radius.
+
+The identical-pair slice has exact minimum
+$367/(1919-1040\sqrt2)>\gamma$ in the frozen four-star analysis.
+For four copies of $(a,b)$, the magnitude of the sum of four
+independent fair signs has masses $3/8,1/2,1/8$ at $0,2,4$.
+Using two independent copies gives
+$A=3a/2+9b/16+(2b-a)_+/8$, $Q=4(a^2+b^2)$ and $B=2(a+kb)$.
+Discarding the positive-part term gives a quadratic quotient
+with numerator matrix and denominator vector
+\[
+ M_4=\begin{pmatrix}1&3/2&9/16\\3/2&4&0\\9/16&0&4\end{pmatrix},
+ \qquad \ell_4=(1,2,2k)^\top .
+\]
+Its Schur complement is $367/1024>0$. The lower bound is
+$(\ell_4^\top M_4^{-1}\ell_4)^{-1}=367/(1919-1040\sqrt2)$.
+Direct substitution gives positive coordinates for $M_4^{-1}\ell_4$
+with $a>2b$, so the discarded term vanishes at the minimizing ray.
+Two singleton pairs $(a,0),(b,0)$ may be merged into one sorted pair
+without changing the Rademacher law or decreasing the Gram norm.
+Theorem~\ref{thm:three} then applies. General deletion is obstructed.
+For instance, appending $(1/2,1/4)$ to $(5,2),(4,2),(2,0)$ leaves
+$A$ unchanged because the old sum is odd and the added magnitude
+is at most $3/4$. At the old minimizing outer weight the increase
+in the Gram denominator is sufficient to decrease the quotient.
+The companion source map identifies the exact comparisons in S08
+and the reproduced fixture. The resulting quotient remains above
+$\gamma$.
+
+Selected closed four-star chambers have separate exact certificates.
+The sharp child of chamber C illustrates a distinction between the
+variance inequality and its certificate. In the fixed-projection
+quadratic comparison a zero on a two-ray support imposes a kernel
+condition on the PSD part of the aggregate residual. The certified
+residual at this split and parameter $\delta=56/25$ requires rank two
+in a PSD-plus-entrywise-nonnegative decomposition. The other child has
+a certificate of rank one after the projection is changed. Their union
+covers C. This is a local result for specified geometric data.
+
+Copositive zero supports, SPN decompositions and simplicial verification
+are established machinery \cite{hildebrand,shaked,bundfuss,bundfussadaptive}. A negative
+value of one aggregate on a nonnegative vector excludes an SPN
+certificate for that aggregate at any rank. The majorization can be
+changed while retaining the original variance problem. For the
+polynomial comparisons used with shifted projections, the Bernstein
+basis is nonnegative and sums to one on the closed interval
+\cite{funfzig}. Nonnegative coefficients give a nonnegative polynomial.
+Strict positivity of an anchor requires a strictly positive lower
+bound on the whole interval. All strictly positive coefficients give
+such a bound, as in the two frozen positive examples. For instance,
+the polynomial $t$ has nonnegative coefficients on $[0,1]$ and
+vanishes at the endpoint. The full four-star inequality remains open.
+
+\subsection{Interpretation and limitations}
+
+The sharp comparisons concern two optima. Every admissible process
+satisfies $\Var(\sum_i w_iX_i)\le\Vstar\le U$, and the identically
+zero scores show that a positive multiple of $U$ gives no variance
+floor for an individual process. A prescribed outcome mechanism or
+richer fixed filtration can shrink the attainable class. Adaptive
+weights, random schedules, and intervals that cross without nesting
+fall outside the stated sharp laminar theorems. Marginal centering
+alone cannot replace issue-time centering. These results supply no
+forecast accuracy, sequential-testing or profitability conclusion.

@@ -1,0 +1,232 @@
+\section{Sharp comparison at depth two}
+
+A star consists of a root with its pairwise disjoint leaves. For one
+such component write $r$ for the root weight, $b=\norm{q}$ for the leaf
+norm and $A=\E|\sum_i q_i\epsilon_i|$ for the first absolute moment of
+the independent fair leaf signs. The recursions give
+\[
+ \Vstar=r^2+b^2+2rA,\qquad U=(r+b)^2.
+\]
+
+\begin{theorem}[Depth two]\label{thm:depth2}
+For every finite laminar forest of depth at most two,
+$\Vstar\ge c_2U$ with sharp constant $c_2=(1+1/\sqrt2)/2$.
+If $U>0$, equality holds precisely when each positive-weight
+component has exactly two equal nonzero leaf magnitudes and root
+magnitude equal to its leaf norm.
+\end{theorem}
+\begin{proof}
+Subtract $c_2U$ on each component:
+\[
+ \Vstar-c_2U=(1-c_2)(r-b)^2+2r(A-b/\sqrt2).
+\]
+The real sharp $L^1$ Khintchine inequality gives $A\ge b/\sqrt2$
+\cite{szarek,haagerup}. For $b>0$, equality in that inequality requires
+exactly two equal nonzero magnitudes \cite{de}. A positive-weight
+component with zero deficit therefore has $r=b>0$ and the described
+leaves. The two forest objectives add across maximal components.
+For sharpness take the root $(0,2]$, leaves $(0,1],(1,2]$, and
+weights $(\sqrt2,1,1)$. Then $A=1$, $\Vstar=4+2\sqrt2$, and $U=8$.
+At $r=b>0$ the comparison reduces to the sharp Khintchine bound.
+\end{proof}
+
+\section{An outer interval with two or three small stars}
+
+Consider one outer root of magnitude $r$ whose children are stars
+with at most two nonzero leaf weights each. For a child with root
+magnitude $m$ and leaf magnitudes $p\ge q\ge0$, the canonical total in
+Theorem~\ref{thm:tree} has law $(m+p)\epsilon+q\eta$ for independent fair
+signs. For $p>q$ the canonical root copies the heavier sign. For $p=q$
+copying that sign gives the same distribution as the fair tie rule.
+When $p=q>0$, the two cancelling leaf configurations are equiprobable,
+and the copied sign takes opposite values on them. If $p=q=0$,
+a fresh fair sign gives total $m\epsilon$. Zero or absent leaves may
+be padded algebraically. The corresponding child Gram norm is
+$m+\sqrt{p^2+q^2}$.
+
+At fixed effective pair $(a,b)=(m+p,q)$ we have $a\ge p\ge b\ge0$.
+The Gram norm $a-p+\sqrt{p^2+b^2}$ is largest at $p=b$, strictly so
+for $b>0$ and $p>b$. Thus the replacement $(m,p,q)=(a-b,b,b)$
+preserves the canonical inner law and weakly increases $U$. Set
+$k=\sqrt2-1$. In the reduced family, independently over the effective
+pairs $(a_j,b_j)$, put
+\begin{align*}
+ S&=\sum_j(a_j\epsilon_j+b_j\eta_j), & A&=\E|S|,\\
+ Q&=\sum_j(a_j^2+b_j^2), & B&=\sqrt{\sum_j(a_j+kb_j)^2}.
+\end{align*}
+The quotient is
+\begin{equation}
+ \frac{\Vstar}{U}=\frac{r^2+2rA+Q}{(r+B)^2}.
+ \label{eq:ratio}
+\end{equation}
+A reduced bound applies to the original problem because its numerator is
+unchanged and its denominator can only increase. For six unit inner
+weights and $r=1$, the exact values are $A=5/2$, $Q=10$ and
+$B=2+\sqrt2$. Thus the quotient is $16/(11+6\sqrt2)<c_2$.
+
+\begin{lemma}[Dominant effective coefficient]\label{lem:dominant}
+If the largest effective coefficient is at least the sum of all others
+and $U>0$, the quotient in~\eqref{eq:ratio} is strictly above
+$\gamma=3/(15-8\sqrt2)$.
+\end{lemma}
+\begin{proof}
+For a nonzero effective vector let $a,b$ be its two largest coefficients,
+padding zeros when needed. Conditioning on the other signs gives $A=a$.
+To upper-bound $B$ we may pair $a$ with $b$. Indeed, if their partners
+were $c,d$, replacing $(a,c),(b,d)$ by $(a,b),(c,d)$ increases the
+squared norm by $2k(b-c)(a-b-c-d)\ge0$ before sorting the last pair.
+Sorting that pair can only increase it. Let $L$ sum the coefficients
+other than $a,b$, $e=a+kb$, and $J$ be the remaining pair norm. Since
+$(x+ky)^2\le x(x+y)$ for $x\ge y\ge0$, $J^2\le bL$ and
+$e\ge(1+k)b+L$. If $J>0$,
+\[
+ \frac{J}{\sqrt{e^2+J^2}+e}
+ \le \frac{\sqrt{bL}}{2((1+k)b+L)}
+ \le \theta:=\frac1{4\sqrt{1+k}} .
+\]
+Thus $B\le a+kb+\theta J$, also for $J=0$.
+Cauchy--Schwarz gives $J^2\le(1+k^2)Q_{\rm rest}$ for the remaining
+squared coefficients $Q_{\rm rest}$. Apply it again to
+$(r+a,b,\sqrt{Q_{\rm rest}})$ to bound~\eqref{eq:ratio} below by
+\[
+ \frac1{(1+k^2)(1+\theta^2)}
+ =\frac{8\sqrt2+8}{16\sqrt2+1}>\gamma .
+\]
+The strict comparison follows from $8\sqrt2>11$. If the effective vector
+is zero, the nonzero root alone gives quotient one.
+\end{proof}
+
+\begin{theorem}[Seven weights]\label{thm:seven}
+For one outer root and at most two disjoint child stars with at most
+two active leaves each, $\Vstar/U\ge\gamma$ whenever $U>0$, where
+\[
+ \gamma=\frac3{15-8\sqrt2}.
+\]
+This is the minimum over the class of such trees and weights. Equality
+requires two child stars with two leaves available in each. Up to
+common positive scaling and relabeling, the equality magnitudes are
+outer weight $2$, both child root weights $(3\sqrt2-1)/2$, and four
+unit leaves. Every other leaf has weight zero. Signs are arbitrary.
+\end{theorem}
+\begin{proof}
+Sort the four effective coefficients $a\ge b\ge c\ge d\ge0$.
+The numerator is invariant under pairings. For two pairs denote the
+squared norm by $B_{ab,cd}^2=(a+kb)^2+(c+kd)^2$ and use analogous
+notation for other pairings. Then
+\begin{align*}
+ B_{ab,cd}^2-B_{ac,bd}^2&=2k(b-c)(a-b-c-d),\\
+ B_{ac,bd}^2-B_{ad,bc}^2&=2k(a-b)(c-d).
+\end{align*}
+The dominant case, including its boundary, is strict by
+Lemma~\ref{lem:dominant}. In the other case a largest norm uses the
+cross pairing $(a,c),(b,d)$. The moment formula is
+\[
+ A=\max\{a,(a+b+c)/2,(3a+b+c+d)/4\}.
+\]
+Indeed, averaging the sign of $a$ yields the maximum of $a$ and the
+absolute remaining sum. Only $b+c+d$ and $b+c-d$ among the four
+possible remaining magnitudes can exceed $a$.
+
+Write $(a,b,c,d)=(x+u,x-u,y+v,y-v)$ in the nondominant case.
+Then $0\le u,v\le y$ and $x\ge y+u+v$. For the reference
+$(x,x,y,y)$ paired as $(x,y),(x,y)$, write
+$A_0=x+y/2$, $B_0=\sqrt2(x+ky)$, $Q_0=2(x^2+y^2)$.
+Put $d_0=\max(u,v)$. Evaluating the second and third branches of
+the moment formula gives $A-A_0\ge\max(v/2,u/2)=d_0/2$.
+The squared differences are $B^2-B_0^2=2(u+kv)^2$ and
+$Q-Q_0=2(u^2+v^2)\ge c_2(B^2-B_0^2)$.
+For $d_0>0$ rationalization gives
+\[
+ B-B_0\le \frac{(u+kv)^2}{\sqrt2(x+ky)}
+ \le d_0\frac{u+kv}{\sqrt2d_0+u+v}\le k d_0.
+\]
+The second step uses $u+kv\le\sqrt2d_0$ and
+$x+ky\ge\sqrt2d_0+u+v$. The last step uses $(1-k)u\le k\sqrt2d_0$. In the deficit
+$r^2+2rA+Q-\gamma(r+B)^2$, the linear term's increase is
+nonnegative because $\gamma k<1/2$, and the constant term strictly
+increases when $d_0>0$ because $c_2>\gamma$. When $d_0=0$ the
+reference is the original sorted vector. It suffices to optimize
+the reference and any equality must be symmetric.
+
+Put $s=\sqrt2$, $z=(r,x,y)^\top$ and $\ell=(1,s,2-s)^\top$.
+The reference quotient is $z^\top M z/(\ell^\top z)^2$, where
+\[
+ M=\begin{pmatrix}1&1&1/2\\1&2&0\\1/2&0&2\end{pmatrix}.
+\]
+The Schur complement of the lower block is $3/8>0$.
+Cauchy--Schwarz in the $M$ inner product yields the reciprocal of
+$\ell^\top M^{-1}\ell=(15-8s)/3$ as a lower bound. The vector
+\[
+ M^{-1}\ell=\bigl((4-2s)/3,\ (5s-4)/6,\ (2-s)/3\bigr)^\top
+\]
+has $r>0$ and $x>y>0$, so its positive ray attains this bound. At
+$y=1$ it gives $r=2$ and $x=x_0:=(1+3s)/2$. Both maximizing
+pairs must be $(x_0,1)$ because pairing the like entries strictly
+reduces $B$. Positive lighter coefficients force equal leaves
+on reversing the within-star replacement. The formula includes
+zero padding, which cannot give equality on a missing required
+leaf or star. At the witness
+$\Vstar=(39+18\sqrt2)/2$ and $U=(99-14\sqrt2)/2$.
+\end{proof}
+
+Fang and Wang \cite[Theorem 1]{fangwang} prove that, for sorted
+nonnegative unit vectors of dimension at least four at distance
+$0\le\tau\le\sqrt{2-\sqrt2}$ from $(1,1,0,\ldots)/\sqrt2$,
+a profile $(x,x,y,y,0,\ldots)$ uniquely minimizes the first absolute
+Rademacher moment. The normalized equality vector in
+Theorem~\ref{thm:seven} has distance about $0.36243$, within that
+range. The quotient optimizes over the distance, outer weight and
+matching as well. For the same coefficient profile, crossing
+heavy with light gives $B^2=2(x_0+k)^2$, while pairing like entries
+gives $B^2=Q$. These pairings share the first moment and distance.
+
+\begin{theorem}[Three small child stars]\label{thm:three}
+With at most three disjoint child stars and at most two active leaves
+per star, the sharp factor in $\Vstar\ge\gamma U$ is the same
+$\gamma$. At $U>0$, equality uses the weights of
+Theorem~\ref{thm:seven} with any remaining star of weight zero at every
+node. If all three stars have positive total weight, the bound is
+strict. The infimum over that subclass is $\gamma$, approached on
+trees with at least two child stars that each have two leaves
+available.
+\end{theorem}
+\begin{proof}
+Minimize the quadratic deficit at fixed coefficients over $r\ge0$.
+Its minimizer is $r=(\gamma B-A)_+/(1-\gamma)$, so the target is
+equivalent to
+\begin{equation}
+ (\gamma B-A)_+^2\le(1-\gamma)(Q-\gamma B^2).
+ \label{eq:deficit}
+\end{equation}
+Here $Q\ge c_2B^2$ and $A\le\sqrt Q\le B$. The last comparison
+follows pairwise from $(a+kb)^2-a^2-b^2=2kb(a-b)$. For
+$H=(1-\gamma)/\gamma$ we have
+\[
+ (\gamma B-A)^2-(1-\gamma)(Q-\gamma B^2)
+ =\gamma\bigl((B-A)^2-H(Q-A^2)\bigr).
+\]
+Consequently the norm inequality
+\begin{equation}
+ B-A\le\sqrt{H(Q-A^2)}
+ \label{eq:norm-test}
+\end{equation}
+suffices. A strict norm inequality excludes equality.
+If $\gamma B\le A$ and $B>0$, strictness follows already from
+$Q>\gamma B^2$. A nonzero outer weight with $B=0$ gives ratio one.
+Pad to three pairs with zero pairs where needed. Lemma~\ref{lem:dominant}
+handles the dominant region. For all other coefficients,
+Appendix~\ref{app:tape} proves~\eqref{eq:norm-test} using a finite
+exact certificate. Its cone inequalities hold on
+all nonnegative generator combinations.
+
+The appendix also shows that equality in the nonzero case forces a
+positive multiple of $(x_0,x_0,1,1,0,0)$ in sorted coefficients.
+Only two heavy--unit pairs and a zero pair maximize $B$ on this
+ray. The deficit strictly decreases with $B>0$ at fixed $r,A,Q$,
+so all other matchings give strictness. The unique minimizing
+outer weight is $2$ in units of the lighter active coefficient,
+and the equality leaves follow from the within-star replacement.
+The seven-weight witness attains equality. Adding positive weights
+to the third star and taking them to zero gives the same infimum
+by continuity of the finite formulas.
+\end{proof}
